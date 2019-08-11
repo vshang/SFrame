@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd">
+<JobConfiguration JobName="DMAnalysisJob" OutputLevel="WARNING">
+  <Library Name="libNtupleVariables" />
+  <Library Name="libGoodRunsLists" />
+  <Library Name="libPileupReweightingTool" />
+  <Library Name="libBTaggingTools" />
+  <Library Name="libDMSearches" />
+  <Library Name="libSVFit"/>
+  <Library Name="libScaleFactorTool"/>
+  <Library Name="libCorrectionTool"/>
+  <Library Name="libVariableTool"/>
+
+  <Package Name="SFrameCore.par" />
+  <Package Name="NtupleVariables.par" />
+  <Package Name="GoodRunsLists.par" />
+  <Package Name="PileupReweightingTool.par" />
+  <Package Name="BTaggingTools.par" />
+  <Package Name="DMSearches.par" />
+  <Package Name="SVFit.par" />
+  <Package Name="ScaleFactorTool.par" />
+  <Package Name="CorrectionTool.par" />
+  <Package Name="VariableTool.par" />
+
+
+  <Cycle Name="DMAnalysis" OutputDirectory="./output/" PostFix="" ProofServer="lite" ProofWorkDir="" RunMode="LOCAL" TargetLumi="1.0">
+    <InputData Lumi="0.0" NEventsMax="-1" Type="DM" Version="1" SkipValid="True">
+      <In FileName="./config/flatTuple_1.root" Lumi="1.0" />
+<!--      <In FileName="/mnt/t3nfs01/data01/shome/dbrzhech/Ntuple/private_prod/flatTuple_DMScalar_top_tWChan_MChi1_MPhi100.root" Lumi="1.0" />-->
+<!--      <In FileName="/mnt/t3nfs01/data01/shome/dbrzhech/Ntuple/private_prod/flatTuple_DMScalar_top_tChan_MChi1_MPhi300.root" Lumi="1.0" />-->
+<!--      <In FileName="/mnt/t3nfs01/data01/shome/dbrzhech/Ntuple/private_prod/flatTuple_DMScalar_top_tWChan_MChi1_MPhi300.root" Lumi="1.0" />-->
+      <InputTree Name="ntuplizer/tree" />
+      <OutputTree Name="tree" />
+    </InputData>
+    <UserConfig>
+      <Item Name="RecoTreeName" Value="tree"/>
+      <Item Name="OutputTreeName" Value="tree"/>
+      <Item Name="IsData" Value="False"/>
+      <Item Name="IsSignal" Value="True"/>
+      
+      <Item Name="JSONFileName" Value="../GoodRunsLists/JSON/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"/>
+      <Item Name="BTaggingScaleTool_WorkingPoint" Value="Medium"/>
+      <Item Name="BTaggingScaleTool_WorkingPoint_veto" Value="Medium"/>
+      <Item Name="BTaggingScaleTool_WorkingPoint_tag" Value="Medium"/>
+
+    </UserConfig>
+  </Cycle>
+</JobConfiguration>

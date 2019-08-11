@@ -35,11 +35,13 @@ obj/
 
 #python stuff
 *.pyc
+*__init__.py*
 
 #root, pdf, png files
-output/*.root
+*.root
 *.pdf
 *.png 
 
 #temporary stuff
 *.*~
+#*#
